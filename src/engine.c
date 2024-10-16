@@ -1,5 +1,4 @@
 #include "../include/rogue.h"
-#include <ncurses.h>
 
 void cursesSetup(void) {
   initscr();
@@ -10,7 +9,7 @@ void cursesSetup(void) {
 void gameLoop(void) {
   int ch;
 
-  mvaddch(player->pos.y, player->pos.x, player->ch);
+  drawEverything();
 
   while ((ch = getch())) {
     if (ch == 'q') {
@@ -18,8 +17,7 @@ void gameLoop(void) {
     }
 
     handleInput(ch);
-    clear();
-    mvaddch(player->pos.y, player->pos.x, player->ch);
+    drawEverything();
   }
 }
 
