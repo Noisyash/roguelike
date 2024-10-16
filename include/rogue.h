@@ -10,36 +10,15 @@ typedef struct {
 } Position;
 
 typedef struct {
-  char ch;
-  bool walkable;
-} Tile;
-
-typedef struct {
   Position pos;
   char ch;
 } Entity;
 
-// draw.c functions
-void drawMap(void);
-void drawEntity(Entity *entity);
-void drawEverything(void);
-
-// engine.c functions
-void cursesSetup(void);
-void gameLoop(void);
-void closeGame(void);
-
-// map.c functions
-Tile **createMapTiles(void);
-void freeMap(void);
-
-// player functions
+// player.c functions
 Entity *createPlayer(Position start_pos);
 void handleInput(int input);
 
 // externs
-extern const int MAP_HEIGHT;
-extern const int MAP_WIDTH;
 extern Entity *player;
-extern Tile **map;
+
 #endif
