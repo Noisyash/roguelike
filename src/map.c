@@ -1,5 +1,12 @@
 #include "../include/rogue.h"
 
+const int MAXROOMS = 11; // maximum number of rooms +1
+const int MINROOMS = 5;
+
+const int MAXROOMHEIGHT = 7;
+const int MINROOMHEIGHT = 3;
+const int MAXROOMWIDTH = 15;
+const int MINROOMWIDTH = 5;
 Tile **createMapTiles(void) {
   Tile **tiles = calloc(MAP_HEIGHT, sizeof(Tile *));
 
@@ -15,13 +22,23 @@ Tile **createMapTiles(void) {
 }
 
 Position setupMap(void) {
+  int y, x, width, height, n_rooms;
+  n_rooms = (rand() % MAXROOMS) + MINROOMS;
+  Room *rooms = calloc(n_rooms, sizeof(Room));
   Position startPos = {10, 50};
-  for (int y = 5; y < 15; y++) {
-    for (int x = 40; x < 60; x++) {
-      map[y][x].ch = ' ';
-      map[y][x].walkable = true;
-    }
+  for (int i = 0; i < n_rooms; i++) {
+    y = (rand() % (MAP_HEIGHT - 10)) + 1;
+    x = (rand() % (MAP_WIDTH - 20)) + 1;
+    height = (rand() % MAXROOMHEIGHT) + MINROOMHEIGHT;
+    width = (rand() % MAXROOMWIDTH) + MINROOMWIDTH;
+    rooms[i] = createRoom(y, x, height, width);
+    addRoomToMap(rooms[i]);
   }
+
+  startPos.y = rooms[0].center.y;
+  startPos.x = rooms[0].center.x;
+
+  free(rooms);
 
   return startPos;
 }

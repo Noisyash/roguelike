@@ -3,6 +3,7 @@
 
 #include <ncurses.h>
 #include <stdlib.h>
+#include <time.h>
 
 typedef struct {
   int y;
@@ -45,7 +46,9 @@ void freeMap(void);
 Entity *createPlayer(Position start_pos);
 void handleInput(int input);
 void movePlayer(Position newPos);
-
+// room.c functions
+Room createRoom(int y, int x, int height, int width);
+void addRoomToMap(Room room);
 // externs
 extern const int MAP_HEIGHT;
 extern const int MAP_WIDTH;
