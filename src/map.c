@@ -14,6 +14,18 @@ Tile **createMapTiles(void) {
   return tiles;
 }
 
+Position setupMap(void) {
+  Position startPos = {10, 50};
+  for (int y = 5; y < 15; y++) {
+    for (int x = 40; x < 60; x++) {
+      map[y][x].ch = ' ';
+      map[y][x].walkable = true;
+    }
+  }
+
+  return startPos;
+}
+
 void freeMap(void) {
   for (int y = 0; y < MAP_HEIGHT; y++) {
     free(map[y]);

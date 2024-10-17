@@ -31,6 +31,7 @@ void closeGame(void);
 
 // map.c functions;
 Tile **createMapTiles(void);
+Position setupMap(void);
 void freeMap(void);
 
 // player.c functions

@@ -13,18 +13,33 @@ void handleInput(int Input) {
 
   Position newPos = {player->pos.y, player->pos.x};
   switch (Input) {
-  case 'i':
+  case '8':
     newPos.y--;
     break;
-  case 'k':
+  case '2':
     newPos.y++;
     break;
-  case 'j':
+  case '4':
     newPos.x--;
     break;
-  case 'l':
+  case '6':
     newPos.x++;
     break;
+  case '7':
+    newPos.y--;
+    newPos.x--;
+    break;
+  case '9':
+    newPos.y--;
+    newPos.x++;
+    break;
+  case '1':
+    newPos.y++;
+    newPos.x--;
+    break;
+  case '3':
+    newPos.y++;
+    newPos.x++;
   default:
     break;
   }
