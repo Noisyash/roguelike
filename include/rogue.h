@@ -15,6 +15,13 @@ typedef struct {
 } Tile;
 
 typedef struct {
+  int height;
+  int width;
+  Position pos;
+  Position center;
+} Room;
+
+typedef struct {
   Position pos;
   char ch;
 } Entity;
